@@ -6,7 +6,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private GameObject carPrefab;
     [SerializeField] private GameObject powerUpPrefab;
     [SerializeField] private Transform spawnContainer;
-    [SerializeField] private CarController carController;
+    [SerializeField] private GameController gameController;
     [SerializeField] private float minSpeed = 3;
     [SerializeField] private float maxSpeed = 5;
     [SerializeField] private float minSpawnInterval = 1;
@@ -31,7 +31,7 @@ public class SpawnManager : MonoBehaviour
     {
         yield return new WaitForSeconds(GetRandomInterval());
 
-        if (carController.currentCar.currentHealth <= 0)
+        if (gameController.currentCar.currentHealth <= 0)
             yield break;
 
         // Choose a random lane to spawn the car in
@@ -59,7 +59,7 @@ public class SpawnManager : MonoBehaviour
     {
         yield return new WaitForSeconds(spawnIntervalPowerUp);
 
-        if (carController.currentCar.currentHealth <= 0)
+        if (gameController.currentCar.currentHealth <= 0)
             yield break;
 
         int laneIndex = Random.Range(0, spawnLane.Length);

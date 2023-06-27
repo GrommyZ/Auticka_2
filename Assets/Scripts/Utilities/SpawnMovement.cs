@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SpawnMovement : MonoBehaviour
 {
-    [SerializeField] private float speed = 10f;
+    private float speed;
 
     void Update()
     {

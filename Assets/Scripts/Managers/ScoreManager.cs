@@ -6,7 +6,7 @@ using TMPro;
 public class ScoreManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreText;
-    [SerializeField] private CarController carController;
+    [SerializeField] private GameController gameController;
     [SerializeField] private HighScoreManager highScoreManager;
     public int score = 0;
 
@@ -16,7 +16,7 @@ public class ScoreManager : MonoBehaviour
     }
    IEnumerator GameScore()
     {
-        if (carController.currentCar.currentHealth == 0)
+        if (gameController.currentCar.currentHealth == 0)
         {
             highScoreManager.UpdateHighScore();
             yield break;

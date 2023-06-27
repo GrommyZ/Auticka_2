@@ -6,11 +6,11 @@ public class HealthManager : MonoBehaviour
     [SerializeField] private GameObject heartPrefab;
     [SerializeField] private Transform heartContainer;
     [SerializeField] private GridLayoutGroup layoutGroup;
-    public CarController carController;
+    [SerializeField] private GameController gameController;
 
     public void InstantiateHearts()
     {
-        int health = carController.currentCar.startHealth;
+        int health = gameController.currentCar.startHealth;
         int numHearts = health;
 
         for (int i = 0; i < numHearts; i++)
@@ -23,7 +23,7 @@ public class HealthManager : MonoBehaviour
     }
     public void RemoveHeart()
     {
-        if (carController.currentCar.currentHealth >= 0)
+        if (gameController.currentCar.currentHealth >= 0)
         {
             int heartCount = heartContainer.childCount;
             if (heartCount > 0)
