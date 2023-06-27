@@ -2631,11 +2631,6 @@ MonoBehaviour:
   highScoreText: {fileID: 1008461607}
   healthUI: {fileID: 1139853253}
   highScoreManager: {fileID: 791945514}
-  currentLane: 2
-  laneWidth: 2.25
-  isChangingLane: 0
-  targetLane: 2
-  countdownTime: 2
   cars:
   - {fileID: 1940927454}
   - {fileID: 1080182176}
@@ -2699,7 +2694,7 @@ MonoBehaviour:
   heartPrefab: {fileID: 3425639370192528974, guid: 556d7ae022358854e99493217b618a69, type: 3}
   heartContainer: {fileID: 1139853252}
   layoutGroup: {fileID: 1139853254}
-  carController: {fileID: 1055467506}
+  gameController: {fileID: 1055467506}
 --- !u!114 &1139853254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3954,13 +3949,13 @@ MonoBehaviour:
   carPrefab: {fileID: 8045801688968322047, guid: 486db430830d37144b533a55957366a3, type: 3}
   powerUpPrefab: {fileID: 4435216293270216712, guid: 9b64f6f823969574ab6edb073e10bd99, type: 3}
   spawnContainer: {fileID: 1819503732}
-  carController: {fileID: 1055467506}
+  gameController: {fileID: 1055467506}
   minSpeed: 3
   maxSpeed: 5
   minSpawnInterval: 1.5
   maxSpawnInterval: 3
   spawnLane: 010000000200000003000000
-  spawnIntervalPowerUp: 30
+  spawnIntervalPowerUp: 15
 --- !u!4 &1819503732
 Transform:
   m_ObjectHideFlags: 0
@@ -4130,7 +4125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1903809739}
-  carController: {fileID: 1055467506}
+  gameController: {fileID: 1055467506}
   highScoreManager: {fileID: 791945514}
   score: 0
 --- !u!1 &1938472959
@@ -4348,6 +4343,10 @@ PrefabInstance:
       propertyPath: carController
       value: 
       objectReference: {fileID: 1055467506}
+    - target: {fileID: 1941242429, guid: e9d38f63ca623ed4487105cbae250986, type: 3}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 1055467506}
     - target: {fileID: 99320347195134739, guid: e9d38f63ca623ed4487105cbae250986, type: 3}
       propertyPath: m_Name
       value: Sports Car
@@ -4455,6 +4454,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3417974929276872110, guid: d85d72c1b8448eb48ba2424183f3ed05, type: 3}
       propertyPath: carController
+      value: 
+      objectReference: {fileID: 1055467506}
+    - target: {fileID: 3417974929276872110, guid: d85d72c1b8448eb48ba2424183f3ed05, type: 3}
+      propertyPath: gameController
       value: 
       objectReference: {fileID: 1055467506}
     m_RemovedComponents: []
@@ -4678,6 +4681,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8407768321096617272, guid: 59e5ebf232268c24c97b5ae0377966d1, type: 3}
       propertyPath: carController
+      value: 
+      objectReference: {fileID: 1055467506}
+    - target: {fileID: 8407768321096617272, guid: 59e5ebf232268c24c97b5ae0377966d1, type: 3}
+      propertyPath: gameController
       value: 
       objectReference: {fileID: 1055467506}
     m_RemovedComponents: []

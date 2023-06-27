@@ -7,12 +7,14 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private GameObject powerUpPrefab;
     [SerializeField] private Transform spawnContainer;
     [SerializeField] private GameController gameController;
-    [SerializeField] private float minSpeed = 3;
-    [SerializeField] private float maxSpeed = 5;
-    [SerializeField] private float minSpawnInterval = 1;
-    [SerializeField] private float maxSpawnInterval = 2;
+    [SerializeField] private float minSpeed;
+    [SerializeField] private float maxSpeed;
+    [SerializeField] private float minSpawnInterval;
+    [SerializeField] private float maxSpawnInterval;
     [SerializeField] private int[] spawnLane;         // lanes for car spawns (1 = left, 2 = middle, 3 = right)
-    [SerializeField] private float spawnIntervalPowerUp = 50f;
+    [SerializeField] private float spawnIntervalPowerUp;
+    private float carSpeed;
+    private float powerUpSpeed = 4f;
     private int laneIndexLast;
     private float spawnVectorY = 0.6f;
     private float spawnVectorZ = 14f;
@@ -46,12 +48,12 @@ public class SpawnManager : MonoBehaviour
         laneIndexLast = laneIndex;
 
         // Choose a random speed for the car
-        float speed = Random.Range(minSpeed, maxSpeed);
+        carSpeed = Random.Range(minSpeed, maxSpeed);
 
         // Spawn the car and set its position, rotation, scale and speed
         GameObject car = Instantiate(carPrefab, new Vector3((lane - 2) * laneWidth, spawnVectorY, spawnVectorZ), Quaternion.Euler(0f, 90f, 0f), spawnContainer);
         car.transform.localScale = spawnScale;
-        car.GetComponent<SpawnMovement>().SetSpeed(speed);
+        car.GetComponent<SpawnMovement>().SetSpeed(carSpeed);
 
         StartCoroutine(SpawnCar());
     }
@@ -64,9 +66,8 @@ public class SpawnManager : MonoBehaviour
 
         int laneIndex = Random.Range(0, spawnLane.Length);
         int lane = spawnLane[laneIndex];
-        float speed = 4f;
         GameObject powerUp = Instantiate(powerUpPrefab, new Vector3((lane - 2) * laneWidth, spawnVectorY, spawnVectorZ), Quaternion.Euler(0f, 90f, 0f), spawnContainer);
-        powerUp.GetComponent<SpawnMovement>().SetSpeed(speed);
+        powerUp.GetComponent<SpawnMovement>().SetSpeed(powerUpSpeed);
 
         StartCoroutine(SpawnPowerUp());
     }
