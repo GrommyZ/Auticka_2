@@ -3947,7 +3947,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carPrefab: {fileID: 8045801688968322047, guid: 486db430830d37144b533a55957366a3, type: 3}
-  powerUpPrefab: {fileID: 4435216293270216712, guid: 9b64f6f823969574ab6edb073e10bd99, type: 3}
+  powerUpPrefab: {fileID: 262085672314750394, guid: 9b64f6f823969574ab6edb073e10bd99, type: 3}
   spawnContainer: {fileID: 1819503732}
   gameController: {fileID: 1055467506}
   minSpeed: 3
@@ -3955,7 +3955,7 @@ MonoBehaviour:
   minSpawnInterval: 1.5
   maxSpawnInterval: 3
   spawnLane: 010000000200000003000000
-  spawnIntervalPowerUp: 15
+  spawnIntervalPowerUp: 2
 --- !u!4 &1819503732
 Transform:
   m_ObjectHideFlags: 0
