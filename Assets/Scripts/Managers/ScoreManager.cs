@@ -16,7 +16,7 @@ public class ScoreManager : MonoBehaviour
     }
    IEnumerator GameScore()
     {
-        if (gameController.currentCar.currentHealth == 0)
+        if (gameController.carController.currentCar.currentHealth == 0)
         {
             highScoreManager.UpdateHighScore();
             yield break;

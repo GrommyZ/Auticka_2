@@ -33,7 +33,7 @@ public class SpawnManager : MonoBehaviour
     {
         yield return new WaitForSeconds(GetRandomInterval());
 
-        if (gameController.currentCar.currentHealth <= 0)
+        if (gameController.carController.currentCar.currentHealth <= 0)
             yield break;
 
         // Choose a random lane to spawn the car in
@@ -61,7 +61,7 @@ public class SpawnManager : MonoBehaviour
     {
         yield return new WaitForSeconds(spawnIntervalPowerUp);
 
-        if (gameController.currentCar.currentHealth <= 0)
+        if (gameController.carController.currentCar.currentHealth <= 0)
             yield break;
 
         int laneIndex = Random.Range(0, spawnLane.Length);

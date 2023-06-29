@@ -10,7 +10,7 @@ public class HealthManager : MonoBehaviour
 
     public void InstantiateHearts()
     {
-        int health = gameController.currentCar.startHealth;
+        int health = gameController.carController.currentCar.startHealth;
         int numHearts = health;
 
         for (int i = 0; i < numHearts; i++)
@@ -23,7 +23,7 @@ public class HealthManager : MonoBehaviour
     }
     public void RemoveHeart()
     {
-        if (gameController.currentCar.currentHealth >= 0)
+        if (gameController.carController.currentCar.currentHealth >= 0)
         {
             int heartCount = heartContainer.childCount;
             if (heartCount > 0)
