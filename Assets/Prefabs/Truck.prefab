@@ -349,7 +349,7 @@ GameObject:
   - component: {fileID: 8407768319510875735}
   - component: {fileID: 555827076}
   - component: {fileID: 555827077}
-  - component: {fileID: 8407768321096617272}
+  - component: {fileID: 8407768321096617277}
   m_Layer: 8
   m_Name: Truck
   m_TagString: Untagged
@@ -458,7 +458,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &8407768321096617272
+--- !u!114 &8407768321096617277
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -467,11 +467,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8407768319508841557}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4e52883afc8ae545a23ed1371da51c9, type: 3}
+  m_Script: {fileID: 11500000, guid: de369377bdce3714fa78666fcbc187cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHealth: 5
-  currentHealth: 5
-  laneChangeSpeed: 5.5
-  invincibleUntil: 0
-  carController: {fileID: 0}
+  gameController: {fileID: 0}

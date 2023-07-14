@@ -13,7 +13,7 @@ public class CarController : MonoBehaviour
     [SerializeField] private GameController gameController;
 
     private int currentLane = 2;      // The current lane the car is in (1 = left lane, 2 = middle lane, 3 = right lane)
-    private float laneWidth = 2.25f;
+    private readonly float laneWidth = 2.25f;
     private bool isChangingLane = false;
     private int targetLane = 2;
 
@@ -36,6 +36,10 @@ public class CarController : MonoBehaviour
         {
             CarChangeLane();
         }
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            currentCar.CarHonk();
+        }
     }
     public void CarChangeLane()
     {
@@ -56,29 +60,24 @@ public class CarController : MonoBehaviour
         {
             OnSportsCarButtonClick();
         }
+        currentCar.SetCarStats();
     }
     public void OnSportsCarButtonClick()
     {
-        Car sportsCar = new Car();
-        sportsCar.startHealth = 3;
-        sportsCar.laneChangeSpeed = 6;
+        Car sportsCar = new SportsCar();
         currentCar = sportsCar;
         currentCarGO = sportsCarGO;
     }
     public void OnTruckButtonClick()
     {
-        Car truck = new Car();
-        truck.startHealth = 5;
-        truck.laneChangeSpeed = 5;
-        currentCar = truck;
+        Car truckCar = new TruckCar();
+        currentCar = truckCar;
         currentCarGO = truckGO;
     }
     public void OnBussButtonClick()
     {
-        Car bus = new Car();
-        bus.startHealth = 10;
-        bus.laneChangeSpeed = 3.5f;
-        currentCar = bus;
+        Car busCar = new BusCar();
+        currentCar = busCar;
         currentCarGO = busGO;
     }
 

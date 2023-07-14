@@ -11,19 +11,21 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private float maxSpeed;
     [SerializeField] private float minSpawnInterval;
     [SerializeField] private float maxSpawnInterval;
-    [SerializeField] private int[] spawnLane;         // lanes for car spawns (1 = left, 2 = middle, 3 = right)
     [SerializeField] private float spawnIntervalPowerUp;
     private float carSpeed;
     private float powerUpSpeed = 4f;
-    private int laneIndexLast;
+    private int laneLast;
     private float spawnVectorY = 0.6f;
     private float spawnVectorZ = 14f;
     private float laneWidth = 2.25f;
-    private Vector3 spawnScale;
+    private int spawnLaneMin = 1;         // lanes for car spawns (1 = left, 2 = middle, 3 = right)
+    private int spawnLaneMax = 4;
+    private Vector3 spawnScaleVector;
+    private int spawnScale = 70;
 
     private void Start()
     {
-        spawnScale = new Vector3(70, 70, 70);
+        spawnScaleVector = new Vector3(spawnScale, spawnScale, spawnScale);
         // Start spawning cars and power ups
         StartCoroutine(SpawnCar());
         StartCoroutine(SpawnPowerUp());
@@ -37,22 +39,21 @@ public class SpawnManager : MonoBehaviour
             yield break;
 
         // Choose a random lane to spawn the car in
-        int laneIndex = Random.Range(0, spawnLane.Length);
+        int lane = Random.Range(spawnLaneMin, spawnLaneMax);
         // If the new lane to spawn the car in is the same as the last, we choose a new lane until its different
-        while (laneIndexLast == laneIndex)
+        while (laneLast == lane)
         {
-            laneIndex = Random.Range(0, spawnLane.Length);
+            lane = Random.Range(spawnLaneMin, spawnLaneMax);
         }
 
-        int lane = spawnLane[laneIndex];
-        laneIndexLast = laneIndex;
+        laneLast = lane;
 
         // Choose a random speed for the car
         carSpeed = Random.Range(minSpeed, maxSpeed);
 
         // Spawn the car and set its position, rotation, scale and speed
         GameObject car = Instantiate(carPrefab, new Vector3((lane - 2) * laneWidth, spawnVectorY, spawnVectorZ), Quaternion.Euler(0f, 90f, 0f), spawnContainer);
-        car.transform.localScale = spawnScale;
+        car.transform.localScale = spawnScaleVector;
         car.GetComponent<SpawnMovement>().SetSpeed(carSpeed);
 
         StartCoroutine(SpawnCar());
@@ -64,8 +65,7 @@ public class SpawnManager : MonoBehaviour
         if (gameController.carController.currentCar.currentHealth <= 0)
             yield break;
 
-        int laneIndex = Random.Range(0, spawnLane.Length);
-        int lane = spawnLane[laneIndex];
+        int lane = Random.Range(spawnLaneMin, spawnLaneMax);
         GameObject powerUp = Instantiate(powerUpPrefab, new Vector3((lane - 2) * laneWidth, spawnVectorY, spawnVectorZ), Quaternion.Euler(0f, 90f, 0f), spawnContainer);
         powerUp.GetComponent<SpawnMovement>().SetSpeed(powerUpSpeed);
 

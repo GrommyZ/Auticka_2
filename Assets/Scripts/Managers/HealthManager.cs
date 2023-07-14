@@ -7,6 +7,7 @@ public class HealthManager : MonoBehaviour
     [SerializeField] private Transform heartContainer;
     [SerializeField] private GridLayoutGroup layoutGroup;
     [SerializeField] private GameController gameController;
+    [SerializeField] private RectTransform layoutGroupRecTransform;
 
     public void InstantiateHearts()
     {
@@ -15,11 +16,9 @@ public class HealthManager : MonoBehaviour
 
         for (int i = 0; i < numHearts; i++)
         {
-            Instantiate(heartPrefab, heartContainer);
+            AddHeart();
         }
 
-        layoutGroup.enabled = false;
-        layoutGroup.enabled = true;
     }
     public void RemoveHeart()
     {
@@ -37,7 +36,6 @@ public class HealthManager : MonoBehaviour
     {
         Instantiate(heartPrefab, heartContainer);
 
-        layoutGroup.enabled = false;
-        layoutGroup.enabled = true;
+        LayoutRebuilder.MarkLayoutForRebuild(layoutGroupRecTransform);
     }
 }
